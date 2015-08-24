@@ -7,7 +7,14 @@
         "default_popup": "index.html"
     },
     "permissions": [
-        "storage"
+        "storage",
+        "identity"
     ],
+    "oauth2": {
+        "client_id": "360812979150-4rj6to0him3ah2m86m50lois6a1743kv.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/calendar"
+        ]
+    },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
