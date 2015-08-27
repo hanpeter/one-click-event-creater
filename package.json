@@ -10,6 +10,6 @@
     },
     "repository" : {
         "type" : "git",
-        "url" : "https://github.com/hanpeter/one-click-event-creater.git"
+        "url" : "git+https://github.com/hanpeter/one-click-event-creater.git"
     }
 }

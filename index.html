@@ -4,11 +4,34 @@
 
         <!-- Libraries -->
         <script src="/node_modules/angular/angular.min.js"></script>
-        <link rel="stylesheet" href="/node_modules/angular/angular-csp.css" type="text/css" />
+        <link rel="stylesheet" href="/node_modules/angular/angular-csp.css" />
+        <script src="/node_modules/foundation-sites/js/vendor/jquery.js"></script>
+        <script src="/node_modules/foundation-sites/js/foundation.min.js"></script>
+        <link rel="stylesheet" href="/node_modules/foundation-sites/css/foundation.min.css">
+        <script src="/node_modules/lodash/index.js"></script>
 
-        <script src="/app.js"></script>
+        <!-- App -->
+        <script src="/js/App.js"></script>
+
+        <!-- Services -->
+        <script src="/js/services/AuthorizationService.js"></script>
+        <script src="/js/services/CalendarService.js"></script>
+
+        <!-- Directives -->
+
+        <!-- Controllers -->
+        <script src="/js/controllers/AppController.js"></script>
     </head>
-    <body>
-
+    <body ng-controller="AppController" style="width: 700px;">
+        <ul class="tabs vertical" data-tab>
+            <li class="tab-title" ng-class="{ active: $first }" ng-repeat="calendar in calendars">
+                <a ng-href="{{'#calendar' + $index}}">{{calendar.name}}</a>
+            </li>
+        </ul>
+        <div class="tabs-content">
+            <div class="content" ng-class="{ active: $first }" ng-repeat="calendar in calendars" ng-attr-id="{{'calendar' + $index}}">
+                {{calendar.description}}
+            </div>
+        </div>
     </body>
 </html>
