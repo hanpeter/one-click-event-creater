@@ -1,0 +1,15 @@
+{
+    "name": "one-click-event-creater",
+    "version": "0.1.0",
+    "description": "TODO",
+    "license": "MIT",
+    "dependencies": {
+        "lodash": "3.*.*",
+        "angular": "1.4.*",
+        "foundation-sites": "5.*.*"
+    },
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/hanpeter/one-click-event-creater.git"
+    }
+}

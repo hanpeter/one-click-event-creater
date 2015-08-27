@@ -1,6 +1,6 @@
 {
     "name": "One Click Event Creater",
-    "version": "0.1",
+    "version": "0.1.0",
     "manifest_version": 2,
     "description": "TODO",
     "browser_action": {
