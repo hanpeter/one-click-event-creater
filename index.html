@@ -13,6 +13,7 @@
 
         <!-- App -->
         <script src="/js/App.js"></script>
+        <link rel="stylesheet" href="/css/App.css" />
 
         <!-- Services -->
         <script src="/js/services/AuthorizationService.js"></script>
@@ -22,17 +23,53 @@
 
         <!-- Controllers -->
         <script src="/js/controllers/AppController.js"></script>
+        <script src="/js/controllers/EventController.js"></script>
     </head>
-    <body ng-controller="AppController" style="width: 700px;">
-        <ul class="tabs vertical" data-tab>
-            <li class="tab-title" ng-class="{ active: $first }" ng-repeat="calendar in calendars">
-                <a ng-href="{{'#calendar' + $index}}">{{calendar.name}}</a>
-            </li>
-        </ul>
-        <div class="tabs-content">
-            <div class="content" ng-class="{ active: $first }" ng-repeat="calendar in calendars" ng-attr-id="{{'calendar' + $index}}">
-                {{calendar.description}}
+    <body ng-controller="AppController">
+        <form ng-controller="EventController" ng-submit="createEvent()">
+            <div class="row">
+                <div class="small-12 columns">
+                    <label>
+                        Event Title
+                        <input type="text" ng-model="title" />
+                    </label>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <label>
+                        Description
+                        <textarea ng-model="description"></textarea>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-6 columns">
+                    <label>
+                        Start Time
+                        <input type="datetime-local" ng-model="startTime" />
+                    </label>
+                </div>
+                <div class="small-6 columns">
+                    <label>
+                        End Time
+                        <input type="datetime-local" ng-model="endTime" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <label>
+                        Guests
+                        <input type="text" ng-model="guests" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <button type="submit" class="button">Create</button>
+                </div>
+            </div>
+        </form>
     </body>
 </html>

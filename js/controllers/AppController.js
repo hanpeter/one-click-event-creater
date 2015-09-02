@@ -1,6 +1,7 @@
 App.controller('AppController', ['$scope', '$timeout', 'CalendarService', function ($scope, $timeout, CalendarService) {
     _.extend($scope, {
-        calendars: []
+        calendars: [],
+        primaryCalendar: null
     });
 
     CalendarService.getCalendarLists()
@@ -13,6 +14,11 @@ App.controller('AppController', ['$scope', '$timeout', 'CalendarService', functi
                     events: {}
                 };
                 $scope.calendars[index] = calendar;
+
+                if (cal.primary) {
+                    $scope.primaryCalendar = calendar;
+                }
+
                 CalendarService.getCalendarEvents(calendar.id)
                     .then(function (events) {
                         _.forEach(events, function (e) {
@@ -38,22 +44,6 @@ App.controller('AppController', ['$scope', '$timeout', 'CalendarService', functi
                                 });
                             });
                         });
-
-                        CalendarService.createCalendarEvent({
-                            attendees: [{
-                                email: 'han.peter.621@gmail.com'
-                            }, {
-                                email: 'phan@clicktime.com'
-                            }],
-                            start: {
-                                dateTime: moment()
-                            },
-                            end: {
-                                dateTime: moment().add(1, 'h')
-                            },
-                            summary: 'Test Event',
-                            description: 'Description'
-                        }, $scope.calendars[0].id);
                     });
             });
         });
