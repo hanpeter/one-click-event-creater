@@ -4,12 +4,13 @@
     "description": "TODO",
     "license": "MIT",
     "dependencies": {
-        "lodash": "3.*.*",
         "angular": "1.4.*",
-        "foundation-sites": "5.*.*"
+        "foundation-sites": "5.*.*",
+        "lodash": "^3.10.1",
+        "moment": "^2.10.6"
     },
-    "repository" : {
-        "type" : "git",
-        "url" : "git+https://github.com/hanpeter/one-click-event-creater.git"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hanpeter/one-click-event-creater.git"
     }
 }
