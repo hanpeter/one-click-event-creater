@@ -1,0 +1,10 @@
+html {
+    height: 100%;
+}
+.inner-wrap {
+    min-height: 100%;
+}
+
+.main-section {
+    padding: 20px;
+}

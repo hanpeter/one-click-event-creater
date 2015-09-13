@@ -6,8 +6,8 @@
     "dependencies": {
         "angular": "1.4.*",
         "foundation-sites": "5.*.*",
-        "lodash": "^3.10.1",
-        "moment": "^2.10.6"
+        "lodash": "latest",
+        "moment": "latest"
     },
     "repository": {
         "type": "git",

@@ -1,0 +1,97 @@
+<html lang="en" ng-app="App" ng-csp ng-jq="jQuery">
+    <head>
+        <title>One Click Event Creater Options</title>
+
+        <!-- Libraries -->
+        <script src="/node_modules/angular/angular.min.js"></script>
+        <link rel="stylesheet" href="/node_modules/angular/angular-csp.css" />
+        <script src="/node_modules/foundation-sites/js/vendor/jquery.js"></script>
+        <script src="/node_modules/foundation-sites/js/foundation.min.js"></script>
+        <link rel="stylesheet" href="/node_modules/foundation-sites/css/foundation.min.css">
+        <script src="/node_modules/lodash/index.js"></script>
+        <script src="/node_modules/moment/moment.js"></script>
+
+        <!-- App -->
+        <script src="/js/Options.js"></script>
+        <link rel="stylesheet" href="/css/Options.css" />
+
+        <!-- Services -->
+        <script src="/js/services/StorageService.js"></script>
+
+        <!-- Directives -->
+
+        <!-- Controllers -->
+        <script src="/js/controllers/OptionsController.js"></script>
+    </head>
+    <body ng-controller="OptionsController">
+        <div class="off-canvas-wrap" data-offcanvas="">
+            <div class="inner-wrap">
+                <nav class="tab-bar">
+                    <section class="left-small">
+                        <a href="#" class="left-off-canvas-toggle menu-icon">
+                            <span></span>
+                        </a>
+                    </section>
+                    <section class="middle tab-bar-section">
+                        <h1 class="title">{{currentTemplate.summary || 'Message Template'}}</h1>
+                    </section>
+                </nav>
+                <aside class="left-off-canvas-menu">
+                    <ul class="off-canvas-list">
+                        <li ng-repeat="template in templates">
+                            <a href="#" ng-click="setCurrentTemplate(template)">{{template.summary}}</a>
+                        </li>
+                        <li><a href="#" ng-click="setCurrentTemplate({})">New Template</a></li>
+                    </ul>
+                </aside>
+                <section class="main-section">
+                    <form ng-submit="saveTemplate()">
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <label>
+                                    Event Title
+                                    <input type="text" ng-model="currentTemplate.summary" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <label>
+                                    Description
+                                    <textarea ng-model="currentTemplate.description"></textarea>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-6 columns">
+                                <label>
+                                    Start Time
+                                    <input type="time" ng-model="currentTemplate.startTime" />
+                                </label>
+                            </div>
+                            <div class="small-6 columns">
+                                <label>
+                                    End Time
+                                    <input type="time" ng-model="currentTemplate.endTime" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <label>
+                                    Guests
+                                    <input type="text" ng-model="currentTemplate.guests" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <button type="submit" class="button">Save Template</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
