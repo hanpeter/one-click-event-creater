@@ -11,7 +11,7 @@ App.controller('OptionsController', ['$scope', '$timeout', 'StorageService', fun
             });
 
             if (origTempl) {
-                _.extend(origTempl, currentTemplate);
+                _.extend(origTempl, $scope.currentTemplate);
                 StorageService.saveTemplates($scope.templates);
             }
             else {
@@ -22,12 +22,12 @@ App.controller('OptionsController', ['$scope', '$timeout', 'StorageService', fun
     });
 
     StorageService.getTemplates()
-        .then(function (data) {
-            $scope.templates = data.templates;
+        .then(function (templates) {
+            $scope.templates = templates;
+            console.log($scope.templates);
         });
 
     $timeout(function () {
         $(document).foundation();
-        console.log($scope.templates);
     });
 }]);
