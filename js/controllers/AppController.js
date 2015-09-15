@@ -1,7 +1,9 @@
-App.controller('AppController', ['$scope', '$timeout', 'CalendarService', function ($scope, $timeout, CalendarService) {
+App.controller('AppController', ['$scope', '$timeout', 'CalendarService', 'StorageService', function ($scope, $timeout, CalendarService, StorageService) {
     _.extend($scope, {
         calendars: [],
-        primaryCalendar: null
+        primaryCalendar: null,
+        templates: [],
+        selectedTemplate: null
     });
 
     CalendarService.getCalendarLists()
@@ -46,6 +48,12 @@ App.controller('AppController', ['$scope', '$timeout', 'CalendarService', functi
                         });
                     });
             });
+        });
+
+    StorageService.getTemplates()
+        .then(function (templates) {
+            $scope.templates = templates;
+            $scope.selectedTemplate = templates[0];
         });
 
     $timeout(function () {
