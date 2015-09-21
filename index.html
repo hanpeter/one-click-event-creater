@@ -24,16 +24,24 @@
 
         <!-- Controllers -->
         <script src="/js/controllers/AppController.js"></script>
-        <script src="/js/controllers/EventController.js"></script>
     </head>
     <body ng-controller="AppController">
-        <form ng-controller="EventController" ng-submit="createEvent()">
+        <form ng-submit="createEvent()">
             <div class="row">
-                <div class="small-12 columns">
+                <div class="small-6 columns">
                     <label>Templates
                         <select ng-options="template.summary for template in templates" ng-model="selectedTemplate"></select>
                     </label>
                 </div>
+                <div class="small-6 columns">
+                    <label>
+                        Start Date
+                        <input type="date" ng-model="date" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                
             </div>
             <div class="row">
                 <div class="small-12 columns">

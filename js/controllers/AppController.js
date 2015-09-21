@@ -3,7 +3,36 @@ App.controller('AppController', ['$scope', '$timeout', 'CalendarService', 'Stora
         calendars: [],
         primaryCalendar: null,
         templates: [],
-        selectedTemplate: null
+        selectedTemplate: null,
+        date: new Date(),
+        createEvent: function () {
+            var template = $scope.selectedTemplate;            
+            var attendees = template.guests
+                ? _.map(template.guests.split(','), function (guest) {
+                    return {
+                        email: _.trim(guest)
+                    };
+                })
+                : null;
+            var startTime = moment(template.startTime);
+            var endTime = moment(template.endTime);
+            var start = moment($scope.date).set({ hour: startTime.hour(), minute: startTime.minute(), second: startTime.second() });
+            var end = moment($scope.date).set({ hour: endTime.hour(), minute: endTime.minute(), second: endTime.second() });
+            CalendarService.createCalendarEvent({
+                    attendees: attendees,
+                    start: {
+                        dateTime: start
+                    },
+                    end: {
+                        dateTime: end
+                    },
+                    summary: template.summary,
+                    description: template.description
+                }, $scope.primaryCalendar.id)
+                .then(function (data) {
+                    console.log(data);
+                });
+        }
     });
 
     CalendarService.getCalendarLists()
@@ -58,6 +87,5 @@ App.controller('AppController', ['$scope', '$timeout', 'CalendarService', 'Stora
 
     $timeout(function () {
         $(document).foundation();
-        console.log($scope.calendars);
     });
 }]);
