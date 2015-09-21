@@ -33,7 +33,7 @@
                         </a>
                     </section>
                     <section class="middle tab-bar-section">
-                        <h1 class="title">{{currentTemplate.summary || 'Message Template'}}</h1>
+                        <h1 class="title">{{currentTemplate.summary || 'New Message Template'}}</h1>
                     </section>
                 </nav>
                 <aside class="left-off-canvas-menu">
@@ -41,7 +41,7 @@
                         <li ng-repeat="template in templates">
                             <a href="#" ng-click="setCurrentTemplate(template)">{{template.summary}}</a>
                         </li>
-                        <li><a href="#" ng-click="setCurrentTemplate({})">New Template</a></li>
+                        <li><a href="#" ng-click="setCurrentTemplate({})">New Message Template</a></li>
                     </ul>
                 </aside>
                 <section class="main-section">

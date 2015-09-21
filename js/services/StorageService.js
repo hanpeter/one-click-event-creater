@@ -58,22 +58,22 @@ App.service('StorageService', ['$q', function ($q) {
         },
         addTemplate: function (templ) {
             return me.getTemplates()
-                .then(function (data) {
-                    data.templates.push(serializeTemplate(templ));
+                .then(function (templates) {
+                    templates.push(templ);
                     return save({
-                        templates: data.templates
+                        templates: _.map(templates, serializeTemplate)
                     });
                 });
         },
         removeTemplate: function (templ) {
             return me.getTemplates()
-                .then(function (data) {
-                    data.templates = _.filter(data.templates, function (template) {
+                .then(function (templates) {
+                    templates = _.filter(templates, function (template) {
                         return template.summary !== templ.summary;
                     });
 
                     return save({
-                        templates: data.templates
+                        templates: _.map(templates, serializeTemplate)
                     });
                 });
         },

@@ -1,8 +1,16 @@
 App.controller('OptionsController', ['$scope', '$timeout', 'StorageService', function ($scope, $timeout, StorageService) {
+    var today = moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0}).toDate();
+
     _.extend($scope, {
         templates: [],
-        currentTemplate: {},
+        currentTemplate: {
+            startTime: today,
+            endTime: today
+        },
         setCurrentTemplate: function (templ) {
+            templ.startTime = templ.startTime || today;
+            templ.endTime = templ.endTime || today;
+
             $scope.currentTemplate = templ;
         },
         saveTemplate: function () {
