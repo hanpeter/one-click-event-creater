@@ -1,8 +1,8 @@
 {
-    "name": "One Click Event Creater",
-    "version": "0.1.0",
+    "name": "One Click Event Creator",
+    "version": "1.0.0",
     "manifest_version": 2,
-    "description": "TODO",
+    "description": "An application to quickly create a calendar event based on a template",
     "browser_action": {
         "default_popup": "index.html"
     },
@@ -12,7 +12,7 @@
         "identity"
     ],
     "oauth2": {
-        "client_id": "360812979150-4rj6to0him3ah2m86m50lois6a1743kv.apps.googleusercontent.com",
+        "client_id": "360812979150-lllth04a5imatnm88t0im89ue2ntgmnf.apps.googleusercontent.com",
         "scopes": [
             "https://www.googleapis.com/auth/calendar"
         ]

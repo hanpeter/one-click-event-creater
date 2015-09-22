@@ -1,7 +1,7 @@
 {
-    "name": "one-click-event-creater",
-    "version": "0.1.0",
-    "description": "TODO",
+    "name": "one-click-event-creator",
+    "version": "1.0.0",
+    "description": "An application to quickly create a calendar event based on a template",
     "license": "MIT",
     "dependencies": {
         "angular": "1.4.*",
@@ -11,6 +11,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/hanpeter/one-click-event-creater.git"
+        "url": "git@github.com:hanpeter/one-click-event-creator.git"
     }
 }
