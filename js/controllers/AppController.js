@@ -1,4 +1,4 @@
-App.controller('AppController', ['$scope', '$timeout', '$q', 'CalendarService', 'StorageService', function ($scope, $timeout, $q, CalendarService, StorageService) {
+App.controller('AppController', ['$scope', '$q', 'CalendarService', 'StorageService', function ($scope, $q, CalendarService, StorageService) {
     _.extend($scope, {
         calendars: [],
         primaryCalendar: null,
@@ -6,7 +6,7 @@ App.controller('AppController', ['$scope', '$timeout', '$q', 'CalendarService', 
         selectedTemplate: null,
         date: new Date(),
         createEvent: function () {
-            var template = $scope.selectedTemplate;            
+            var template = $scope.selectedTemplate;
             var attendees = template.guests
                 ? _.map(template.guests.split(','), function (guest) {
                     return {
@@ -63,8 +63,4 @@ App.controller('AppController', ['$scope', '$timeout', '$q', 'CalendarService', 
         .then(function () {
             console.log($scope.templates);
         });
-
-    $timeout(function () {
-        $(document).foundation();
-    });
 }]);

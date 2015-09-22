@@ -11,4 +11,7 @@ window.App = angular.module('App', ['rollbar'])
                 environment: 'production'
             }
         });
-    }]);
+    }])
+    .run(function () {
+        $(document).foundation();
+    });
