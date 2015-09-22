@@ -29,8 +29,8 @@
         <script src="/js/controllers/AppController.js"></script>
     </head>
     <body ng-controller="AppController">
-        <form ng-submit="createEvent()">
-            <div class="row">
+        <form class="create-form" ng-submit="createEvent()">
+            <div class="row first">
                 <div class="small-6 columns">
                     <label>Templates
                         <select ng-options="template.summary for template in templates" ng-model="selectedTemplate"></select>
@@ -43,7 +43,7 @@
                     </label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row last">
                 <div class="small-12 columns">
                     <button type="submit" class="button">Create Event</button>
                 </div>
