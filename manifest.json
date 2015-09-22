@@ -17,5 +17,5 @@
             "https://www.googleapis.com/auth/calendar"
         ]
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://d37gvrvc0wt4s1.cloudfront.net/; object-src 'self'"
 }
