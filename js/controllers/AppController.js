@@ -1,4 +1,4 @@
-App.controller('AppController', ['$scope', '$q', 'CalendarService', 'StorageService', function ($scope, $q, CalendarService, StorageService) {
+App.controller('AppController', ['$scope', '$timeout', '$q', 'CalendarService', 'StorageService', function ($scope, $timeout, $q, CalendarService, StorageService) {
     _.extend($scope, {
         calendars: [],
         primaryCalendar: null,
@@ -30,9 +30,16 @@ App.controller('AppController', ['$scope', '$q', 'CalendarService', 'StorageServ
                     description: template.description
                 }, $scope.primaryCalendar.id)
                 .then(function (data) {
+                    $scope.isCreateSuccess = true;
                     console.log(data);
+                })
+                .catch(function (data) {
+                    $scope.isCreateSuccess = false;
+                    console.log(data);
+                    throw new Error(JSON.stringify(arguments));
                 });
-        }
+        },
+        isCreateSuccess: null
     });
 
     CalendarService.getCalendarLists()
@@ -63,4 +70,12 @@ App.controller('AppController', ['$scope', '$q', 'CalendarService', 'StorageServ
         .then(function () {
             console.log($scope.templates);
         });
+
+    $scope.$watch('isCreateSuccess', function (value) {
+        if (value !== null) {
+            $timeout(function () {
+                $scope.isCreateSuccess = null;
+            }, 8000);
+        }
+    });
 }]);

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/node_modules/angular/angular-csp.css" />
         <script src="/node_modules/foundation-sites/js/vendor/jquery.js"></script>
         <script src="/node_modules/foundation-sites/js/foundation.min.js"></script>
-        <link rel="stylesheet" href="/node_modules/foundation-sites/css/foundation.min.css">
+        <link rel="stylesheet" href="/node_modules/foundation-sites/css/foundation.min.css" />
         <script src="/node_modules/lodash/index.js"></script>
         <script src="/node_modules/moment/moment.js"></script>
 
@@ -44,8 +44,16 @@
                 </div>
             </div>
             <div class="row last">
-                <div class="small-12 columns">
+                <div class="small-4 columns">
                     <button type="submit" class="button">Create Event</button>
+                </div>
+                <div class="small-8 columns">
+                    <span class="alert alert-success" ng-class="{ 'alert-show': isCreateSuccess == true }">
+                        The event has been created. Please check your calendar.
+                    </span>
+                    <span class="alert alert-error" ng-class="{ 'alert-show': isCreateSuccess == false }">
+                        Something went wrong with your event. Please try again.
+                    </span>
                 </div>
             </div>
         </form>
