@@ -7,6 +7,10 @@ App.controller('AppController', ['$scope', '$timeout', '$q', 'CalendarService', 
         date: new Date(),
         createEvent: function () {
             var template = $scope.selectedTemplate;
+            if (template.isPlaceHolder) {
+                return;
+            }
+
             var attendees = template.guests
                 ? _.map(template.guests.split(','), function (guest) {
                     return {
@@ -64,8 +68,18 @@ App.controller('AppController', ['$scope', '$timeout', '$q', 'CalendarService', 
 
     StorageService.getTemplates()
         .then(function (templates) {
-            $scope.templates = templates;
-            $scope.selectedTemplate = templates[0];
+            if (templates && templates.length > 0) {
+                $scope.templates = templates;
+                $scope.selectedTemplate = templates[0];
+            }
+            else {
+                var placeholder = {
+                    summary: 'Please use Options to create templates',
+                    isPlaceHolder: true
+                };
+                $scope.templates = [placeholder];
+                $scope.selectedTemplate = placeholder;
+            }
         })
         .then(function () {
             console.log($scope.templates);
