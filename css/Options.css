@@ -8,3 +8,51 @@ html {
 .main-section {
     padding: 20px;
 }
+
+.row.button-row > .columns,
+.row.button-row > .columns > .alert {
+    height: 51px;
+    line-height: 51px;
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+    0.1% {
+        opacity: 0;
+        display: inline;
+    }
+    12.5% {
+        opacity: 1;
+        display: inline;
+    }
+    87.5% {
+        opacity: 1;
+        display: inline;
+    }
+    99.9% {
+        opacity: 0;
+        display: inline;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+.alert {
+    opacity: 0;
+    display: none;
+}
+.alert.alert-show {
+    opacity: 1;
+    display: inline;
+    animation: fade-in-out 8s;
+}
+.alert.alert-success {
+    color: #43AC6A;
+}
+.alert.alert-error {
+    color: #F04124;
+}

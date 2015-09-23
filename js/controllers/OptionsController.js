@@ -1,4 +1,4 @@
-App.controller('OptionsController', ['$scope', 'StorageService', function ($scope, StorageService) {
+App.controller('OptionsController', ['$scope', '$timeout', 'StorageService', function ($scope, $timeout, StorageService) {
     var today = moment().set({ hour: 0, minute: 0, second: 0, millisecond: 0}).toDate();
 
     _.extend($scope, {
@@ -17,16 +17,27 @@ App.controller('OptionsController', ['$scope', 'StorageService', function ($scop
             var origTempl = _.find($scope.templates, function (templ) {
                 return templ.summary === $scope.currentTemplate.summary;
             });
+            var promise = null;
 
             if (origTempl) {
                 _.extend(origTempl, $scope.currentTemplate);
-                StorageService.saveTemplates($scope.templates);
+                promise = StorageService.saveTemplates($scope.templates);
             }
             else {
                 $scope.templates.push($scope.currentTemplate);
-                StorageService.addTemplate($scope.currentTemplate);
+                promise = StorageService.addTemplate($scope.currentTemplate);
             }
-        }
+
+            promise
+                .then(function () {
+                    $scope.isSaveSuccess = true;
+                })
+                .catch(function () {
+                    $scope.isSaveSuccess = false;
+                    throw new Error(JSON.stringify(arguments));
+                });
+        },
+        isSaveSuccess: null
     });
 
     StorageService.getTemplates()
@@ -34,4 +45,12 @@ App.controller('OptionsController', ['$scope', 'StorageService', function ($scop
             $scope.templates = templates;
             console.log($scope.templates);
         });
+
+    $scope.$watch('isSaveSuccess', function (value) {
+        if (value !== null) {
+            $timeout(function () {
+                $scope.isSaveSuccess = null;
+            }, 8000);
+        }
+    });
 }]);
