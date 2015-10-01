@@ -20,7 +20,8 @@ App.service('CalendarService', ['$http', function ($http) {
                             name: cal.summary,
                             description: cal.description,
                             events: {},
-                            isPrimary: cal.primary
+                            isPrimary: cal.primary,
+                            isOwner: cal.accessRole === 'owner'
                         };
                     });
                 });

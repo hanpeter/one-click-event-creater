@@ -28,7 +28,7 @@
         <!-- Controllers -->
         <script src="/js/controllers/AppController.js"></script>
     </head>
-    <body ng-controller="AppController">
+    <body ng-controller="AppController" ng-cloak>
         <form class="create-form" ng-submit="createEvent()">
             <div class="row first">
                 <div class="small-6 columns">
@@ -45,14 +45,17 @@
             </div>
             <div class="row last">
                 <div class="small-4 columns">
-                    <button type="submit" class="button" ng-disabled="selectedTemplate.isPlaceHolder">Create Event</button>
+                    <button type="submit" class="button" ng-disabled="selectedTemplate.isPlaceHolder || !primaryCalendar">Create Event</button>
                 </div>
                 <div class="small-8 columns">
-                    <span class="alert alert-success" ng-class="{ 'alert-show': isCreateSuccess == true }">
+                    <span class="alert alert-create alert-success" ng-class="{ 'alert-show': isCreateSuccess == true }">
                         The event has been created. Please check your calendar.
                     </span>
-                    <span class="alert alert-error" ng-class="{ 'alert-show': isCreateSuccess == false }">
+                    <span class="alert alert-create alert-error" ng-class="{ 'alert-show': isCreateSuccess == false }">
                         Something went wrong with your event. Please try again.
+                    </span>
+                    <span class="alert alert-error" ng-class="{ 'alert-show': !primaryCalendar }" style="line-height: 24px;">
+                        Something went wrong with your calendars. Please check your google calendar settings and try again.
                     </span>
                 </div>
             </div>

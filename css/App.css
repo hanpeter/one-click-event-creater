@@ -13,10 +13,10 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.create-form > .row.last > .columns,
-.create-form > .row.last > .columns > .alert {
+.create-form > .row.last > .columns {
     height: 51px;
     line-height: 51px;
+    overflow: hidden;
 }
 
 @keyframes fade-in-out {
@@ -59,4 +59,8 @@ body {
 }
 .alert.alert-error {
     color: #F04124;
+}
+.alert.alert-create {
+    height: 51px;
+    line-height: 51px;
 }

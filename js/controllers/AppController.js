@@ -1,7 +1,7 @@
 App.controller('AppController', ['$scope', '$timeout', '$q', 'CalendarService', 'StorageService', function ($scope, $timeout, $q, CalendarService, StorageService) {
     _.extend($scope, {
         calendars: [],
-        primaryCalendar: null,
+        primaryCalendar: true,
         templates: [],
         selectedTemplate: null,
         date: new Date(),
@@ -50,7 +50,7 @@ App.controller('AppController', ['$scope', '$timeout', '$q', 'CalendarService', 
         .then(function (calendarList) {
             $scope.calendars = calendarList;
 
-            $scope.primaryCalendar = _.find($scope.calendars, { isPrimary: true });
+            $scope.primaryCalendar = _.find($scope.calendars, { isPrimary: true }) || _.find($scope.calendars, { isOwner: true });
 
             return $scope.calendars;
         })
